@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <label>你的名字</label>
+    <label>
+        <select>
+            <option>大伯</option>
+            <option>爸爸</option>
+            <option>叔叔</option>
+            <option>姑姑</option>
+        </select>
+    </label>
+    <label>購買日期</label>
+    <label>
+        <input type="date" id="myDate">
+    </label>
+    <label>類別</label>
+    <label>
+        <select>
+            <option value="">請選擇</option>
+            <option value="A">食物</option>
+            <option value="A">衣服</option>
+            <option value="A">日常花費(水電等)</option>
+            <option value="A">行</option>
+            <option value="A">樂</option>
+            <option value="A">醫療</option>
+            <option value="A">存入</option>
+        </select>
+    </label>
+    <label>新增購買的東西</label>
+    <table>
+        <thead>
+        <tr>
+            <td>
+                <label>
+                    消費名稱
+                </label>
+            </td>
+            <td>
+                <label>
+                    消費金額
+                </label>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <label>
+                    <input type="text">
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input type="number">
+                </label>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <label>收據或可證明的照片</label>
+    <label>
+        <input type="file">
+    </label>
+</div>
+<input type="button" onclick="refreshPage()" value="送出"
+       style="width:500px;height:250px; font-size: 100px; background-color: green; margin: 200px 200px">
+
+<script type="text/javascript">
+    document.getElementById("myDate").value = new Date().toISOString().slice(0, 10);
+    function refreshPage() {
+        alert("新增完成!!");
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+
+<style>
+    label {
+        font-size: 40px;
+    }
+</style>

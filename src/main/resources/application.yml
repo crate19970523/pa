@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /pa
+spring:
+  datasource:
+    username:
+    password:
+    url:
+    driver-class-name: org.mariadb.jdbc.Driver
+
+sftp:
+  host: 0.tcp.jp.ngrok.io
+  port: 17401
+  user: suzumiya
+  password: s521216s
+  path: "/pa-test/"
+logging:
+  file:
+    name: "./log/Han-engin.log"
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+  level:
+    root: info
+    com:
+      crater:
+        hanaengine:
+          dao:
+            mapper: debug
