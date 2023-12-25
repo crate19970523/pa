@@ -10,9 +10,9 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
 
 sftp:
-  host: 0.tcp.jp.ngrok.io
-  port: 17401
-  user: suzumiya
+  host:
+  port:
+  user:
   password: s521216s
   path: "/pa-test/"
 logging:
