@@ -13,7 +13,7 @@ sftp:
   host:
   port:
   user:
-  password: s521216s
+  password:
   path: "/pa-test/"
 logging:
   file:
