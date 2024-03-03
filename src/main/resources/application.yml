@@ -6,6 +6,11 @@ server:
 spring:
   profiles:
     active: dev
+springdoc:
+  packages-to-scan: com.crater.pa.controller
+  swagger-ui:
+    enabled: true
+    path: open-api.html
 
 logging:
   file:
