@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crater.pa.dao.mapper.TransactionDaoMapper">
+    <insert id="insertNewTransaction" parameterType="com.crater.pa.bean.db.TransactionVo">
+        INSERT INTO TRANSACTION(ACCOUNTING_REGISTRANT_SEQNO, CATALOG_SEQNO, ITEM_NAME, AMOUNT, PROV_FILE_NAME,
+                                REMARK, CREATE_TIME, CREATE_USERID, BUY_DATE)
+        VALUES (#{accountingRegistrantSeqno}, #{catalogSeqno}, #{itemName}, #{amount}, #{provFileName}, #{remark},
+                now(), 'system', #{buyDate})
+    </insert>
+
+    <select id="queryTransactionByDate" parameterType="java.time.LocalDate" resultType="com.crater.pa.bean.db.dto.TransactionDto">
+        SELECT TRANSACTION.SEQNO           AS SEQNO,
+               BUY_DATE                    AS BUY_DATE,
+               ACCOUNTING_REGISTRANT_SEQNO AS ACCOUNTING_REGISTRANT_SEQNO,
+               ACCOUNTING_REGISTRANT.NAME  AS NAME,
+               CATALOG.DISPLAY_NAME        AS CATALOG,
+               ITEM_NAME                   AS ITEM_NAME,
+               AMOUNT                      AS AMOUNT
+        FROM TRANSACTION
+                 INNER JOIN ACCOUNTING_REGISTRANT
+                            ON TRANSACTION.ACCOUNTING_REGISTRANT_SEQNO = ACCOUNTING_REGISTRANT.SEQNO
+                 LEFT JOIN CATALOG ON TRANSACTION.CATALOG_SEQNO = CATALOG.SEQNO
+        WHERE BUY_DATE BETWEEN #{startDate} AND #{endDate}
+        ORDER BY TRANSACTION.BUY_DATE
+    </select>
+</mapper>

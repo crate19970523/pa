@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crater.pa.dao.mapper.AccountRegistrantDaoMapper">
+    <select id="queryAll" resultType="com.crater.pa.bean.db.AccountingRegistrantVo">
+        SELECT SEQNO, NAME, LAST_UPDATE_TIME, UPDATE_USER_ID
+        FROM ACCOUNTING_REGISTRANT
+    </select>
+    
+    <insert id="insert" parameterType="com.crater.pa.bean.db.AccountingRegistrantVo">
+        INSERT INTO ACCOUNTING_REGISTRANT (NAME, LINE_USERID, LAST_UPDATE_TIME, UPDATE_USER_ID)
+        VALUES (#{name}, #{lineUserId}, now(), #{lastUpdateUserId})
+    </insert>
+
+    <resultMap id="accountingResultMap" type="com.crater.pa.bean.db.AccountingRegistrantVo">
+        <result property="seqno" column="SEQNO"/>
+        <result property="name" column="NAME"/>
+        <result property="lastUpdateTime" column="LAST_UPDATE_TIME"/>
+        <result property="lastUpdateUserId" column="UPDATE_USER_ID"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+  servlet:
+    context-path: /pa
+spring:
+  profiles:
+    active: dev
+
+logging:
+  file:
+    name: "./log/Han-engin.log"
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+  level:
+    root: info
+    com:
+      crater:
+        hanaengine:
+          dao:
+            mapper: debug
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
