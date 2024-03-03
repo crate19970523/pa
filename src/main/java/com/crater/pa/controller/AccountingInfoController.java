@@ -5,6 +5,8 @@ import com.crater.pa.bean.response.Error;
 import com.crater.pa.bean.service.AccountingRegistrantResultDto;
 import com.crater.pa.bean.service.CatalogResultDto;
 import com.crater.pa.service.AccountingInfoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,14 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 @RestController
+
+@Tag(name = "取得記帳相關資訊")
 public class AccountingInfoController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     private AccountingInfoService accountingInfoService;
 
+    @Operation(description = "取得記帳人員的下拉選單")
     @GetMapping("/accountingInfo/accountingRegistrant")
     public GetAccountingRegistrantResponse getAccountingRegistrant() {
         try {
@@ -43,6 +48,7 @@ public class AccountingInfoController {
         }
     }
 
+    @Operation(description = "取得消費類別清單，已棄用")
     @GetMapping("/accountingInfo/catalog")
     public GetCatalogResponse getCatalog() {
         try {
