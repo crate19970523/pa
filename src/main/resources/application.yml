@@ -14,7 +14,7 @@ springdoc:
 
 logging:
   file:
-    name: "./log/Han-engin.log"
+    name: "./log/pa.log"
   logback:
     rollingpolicy:
       max-file-size: 100MB
